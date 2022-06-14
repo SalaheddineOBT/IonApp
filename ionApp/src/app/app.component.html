@@ -1,5 +1,6 @@
 <ion-app>
-    <ng-container *ngIf="currentuser()">
+    <!-- <ng-container *ngIf="currentuser()"> -->
+        <ng-container>
         <ion-header  [translucent]="false">
             <ion-toolbar class="test">
                 <ion-buttons slot="start">
@@ -13,7 +14,7 @@
                 </div>
             </ion-toolbar>
         </ion-header>
-        
+
         <ion-menu contentId="main-content" type="overlay">
             <ion-content>
                 <ion-list id="inbox-list">

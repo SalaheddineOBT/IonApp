@@ -15,7 +15,7 @@ export class CarsPage implements OnInit {
     cate: Array<any> = null;
 
     options={
-        slidesPerView:2.5,
+        slidesPerView:4,
         centeredSlides:false,
         loop:false,
     };
