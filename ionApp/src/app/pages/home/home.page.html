@@ -1,11 +1,9 @@
 <ion-content [fullscreen]="true">
     <div class="banner">
         <img src="../../../assets/images/panner1.png" alt="" srcset="">
-
         <div class="caption ion-padding">
             Choose Your Favorite<br>Dream Car
         </div>
-
         <div class="search">
             <ion-item lines="none" class="ion-no-padding">
                 <ion-icon slot="start" name="search-outline"></ion-icon>
@@ -16,57 +14,55 @@
             </ion-item>
         </div>
     </div>
-
     <div class="title">
         <h2>Popular Renters</h2>
         <p (click)="navigateToCars()">See All</p>
     </div>
-
     <div class="car-slider">
         <ion-slides [options]="{loop:false,slidesPerView:'auto',zoom:false,grabCursor:true,centeredSlides:false,spaceBetween:5}">
-            <ion-slide class="ion-text-left">
-                <ion-card>
-                    <ion-card-header class="ion-no-padding">
-                        <img src="../../../assets/images/intro2.jpg" alt="">
+            <ion-slide class="ion-text-left" *ngFor="let item of cars">
+                <ion-card class="carCard">
+                    <ion-card-header style="padding-bottom: 0">
+                        <ion-card-title class="hidenn">
+                            <div class="test">
+                                <div class="NameCars">
+                                    {{item.Name}}
+                                </div>
+                                <div>
+                                    <img style="width: 2rem;" (click)="toogleStar()" [src]="path" alt="" srcset="">
+                                </div>
+                            </div>
+                        </ion-card-title>
                     </ion-card-header>
-                    <ion-card-content>
-                        <div class="stars">
-                            <div class="star">
-                                <ion-icon name="star"></ion-icon>
-                                <span>4.5</span>
-                            </div>
-
-                            <div class="price">
-                                <span>350 $</span>/d
-                            </div>
-
+                    <ion-card-content class="hidenn">
+                        <div class="Categorie">
+                            {{item.Categorie}}
                         </div>
-                        <span class="categorie">{{'coupe' | titlecase}}</span>
-                        <h2 style="padding-bottom:5px;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100%;" class="name">{{'car volvo'|titlecase}}</h2>
-                        <p style="padding-bottom:5px;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100%;" class="description">{{'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia minima fuga, dolore rem illum dicta quasi libero consectetur reiciendis, ad animi, possimus consequuntur incidunt nesciunt tempora. Nihil nesciunt iste voluptate.'|titlecase}}</p>
-                        <ion-button>More Details</ion-button>
                     </ion-card-content>
-                </ion-card>
-            </ion-slide>
-            <ion-slide class="ion-text-left">
-                <ion-card>
-                    <ion-card-header class="ion-no-padding">
-                        <img src="../../../assets/images/intro2.jpg" alt="">
+                    <ion-img class="testttttttt" src="https://rumbustious-hilltop.000webhostapp.com/API/Photos/cars/{{item.Photo}}" [routerLink]="['/car-details',item?.ID]"></ion-img>
+                    <ion-card-header style="padding-bottom: 0">
+                        <ion-card-title class="hidenn">
+                            <div class="test">
+                                <div class="testtt">
+                                    <div class="NameCars">
+                                        <span style="width: 6rem;">
+                                            <img src="./assets/images/user.png">
+                                            {{item.PlaceNumber}}
+                                        </span>
+                                        <span>
+                                            <img src="./assets/images/manual.png">
+                                            {{item.CarType}}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span style="font-size: 15px;font-weight: 600;color: #107fb6;"> ${{item.PricePerDay}}/Day</span>
+                                </div>
+                            </div>
+                        </ion-card-title>
                     </ion-card-header>
-                    <ion-card-content>
-                        <p class="stars">
-                            <ion-icon name="star"></ion-icon>
-                            <span>4.6</span>
-                        </p>
-                        <span class="categorie">{{'coupe' | titlecase}}</span>
-                        <h2 style="padding-bottom:5px;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100%;" class="name">{{'car volvo'|titlecase}}</h2>
-                        <p style="padding-bottom:5px;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100%;" class="description">{{'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia minima fuga, dolore rem illum dicta quasi libero consectetur reiciendis, ad animi, possimus consequuntur incidunt nesciunt tempora. Nihil nesciunt iste voluptate.'|titlecase}}</p>
-
-                    </ion-card-content>
                 </ion-card>
             </ion-slide>
         </ion-slides>
     </div>
-
-
 </ion-content>

@@ -84,6 +84,7 @@ ion-content{
         margin-top: .3rem;
         padding: 30px 26px 20px 20px;
         align-items: center;
+        
         h2{
             margin: 0;
             font-size: 20px;
@@ -114,103 +115,112 @@ ion-content{
             padding-right: 1rem;
         }
 
-        ion-slide{
-            width: 90%;
-        }
-
-        ion-card{
-            width: 100%;
-            border-radius: 12px;
-            // box-shadow: 0px 4px 12px 2px rgba(0,0,0,.16);
-            margin-left: 0;
-            margin-top: 0;
-            margin-top: .5rem;
-        }
-
-        ion-card{
-            img{
-                height: 10rem;
-            }
-        }
-
-        ion-card-content{
-            padding-top: 13px;
-
-            .stars{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .star{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #ffd900;
-                border-radius: 20px;
-                padding-left: .4rem;
-                padding-right: .5rem;
-                padding-top: .1rem;
-                padding-bottom: .1rem;
-            }
-
-            .star ion-icon{
-                color: white;
-            }
-            .star span{
-                padding-left: .3rem;
-                font-weight: 600;
-                padding-top: .1rem;
-                font-size: 1.1rem;
-            }
-
-            .price{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding-top: .3rem;
-                font-size: 1rem;
-            }
-
-            .price span{
-                color: var(--ion-color-primaryy);
-                font-weight: 600;
-            }
-
-            .categorie{
-                padding-top: .6rem;
-                color: #191f25;
-                font-size: .8rem;
-                padding-left: .1rem;
-            }
-
-            .name{
-                padding-top: .2rem;
-                font-weight: 700;
-                color: var(--ion-color-primaryy);
-                font-size: 1.2rem;
-                padding-left: .1rem;
-            }
-
-            .description{
-                padding-left: .2rem;
-                padding-right: .2rem;
-            }
-
-            ion-button{
-                display: flex;
-                align-items: center;
-                justify-items: center;
-                height: 1.5rem;
-                width: 60%;
-                margin: auto;
-                margin-top: .3rem;
-                font-size: .75rem;
-            }
-
-
-        }
-
     }
 
+}
+.ion-card{
+    width: 3.5rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 1rem 1rem 0.5rem 1rem;
+}
+.ion-card img{
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.ion-card h2{
+    font-weight: 500;
+}
+
+ion-label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-label span{
+    padding-left: .5rem;
+}
+
+.ios .refrecher{
+    background-color: white;
+    color: var(--ion-color-primaryy);
+}
+
+.hidenn{
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+.d-flex{
+    margin-top: 5.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+:host ::ng-deep{
+    .ion-margin-top{
+        margin-top: 0 !important;
+    }
+    .swiper-wrapper{
+        margin-bottom: 0.5rem;
+    }
+}
+.Brand{
+    font-weight: 600;
+}
+.test{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.test:first-child{
+    height: 2.5rem;
+    img{
+        height: 2rem;
+    }
+}
+.NameCars{
+    font-size: 16px;
+    font-weight: 600;
+    font-family: revert;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 110px;
+    img{
+        width: 37%;
+        margin-right: 0.2rem;
+    }
+}
+.Categorie{
+    padding: 1px;
+}
+.testtt{
+    display: flex;
+    align-items: center;
+}
+.testttttttt{
+    width: 100%;
+    height: 150px;
+}
+.md{
+    .carCard{
+        height: 20rem; 
+        border-radius: 20px;
+    }
+}
+
+.ios{
+    .carCard{
+        height: 21rem; 
+        border-radius: 20px;
+    }
 }

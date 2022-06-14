@@ -10,9 +10,12 @@ import { WidgetUtilService } from 'src/app/providers/widget-util.service';
 export class CarsPage implements OnInit {
 
     cars: any = [];
+    star: boolean;
     showPages: boolean;
     marques: any=[];
     cate: Array<any> = null;
+
+    path: any = './assets/images/favorite.png';
 
     options={
         slidesPerView:4,
@@ -84,6 +87,12 @@ export class CarsPage implements OnInit {
             this.fillMarques();
         (event.target as any).complete();
         }, 2000);
+    }
+
+    toogleStar(){
+        let v = !this.star;
+        this.path = './assets/images/star.png';
+        this.star = v;
     }
 
 }

@@ -45,11 +45,26 @@ ion-label span{
     max-width: 100%;
 }
 .d-flex{
-    margin-top: 5.5rem;
+    margin-top: 6rem;
+    margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
     padding-left: 1rem;
     padding-right: 1rem;
+    .ticket{
+        margin: 0;
+        font-size: 14px;
+        border-radius: 20px;
+        padding: 0.5rem;
+        border: 1px solid var(--ion-color-primaryy);
+        font-weight: 500;
+        color: var(--ion-color-primaryy);
+        transition: 0.2s linear;
+    }
+    .ticket:active{
+        background: var(--ion-color-primaryy);
+        color: white;
+    }
 }
 :host ::ng-deep{
     .ion-margin-top{
@@ -93,7 +108,7 @@ ion-label span{
 }
 .md{
     .carCard{
-        height: 18.5rem; 
+        height: 18rem; 
         border-radius: 20px;
     }
 }
