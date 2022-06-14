@@ -140,6 +140,7 @@ ion-item.selected {
     .user-avatar {
         width: 80px;
         height: 80px;
+        overflow: hidden;
         justify-content: center;
         align-items: center;
         font-size: 1.5rem;
@@ -150,6 +151,11 @@ ion-item.selected {
         color: var(--ion-color-primaryy);
         border: 7px solid #2b97da98;
         margin-right: 14px;
+
+        img{
+            width: 100%;
+            height: 117%;
+        }
     }
     h2 {
         font-weight: 400 !important;

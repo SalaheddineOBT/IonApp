@@ -10,6 +10,7 @@ export class ApiService {
     public selectedall = JSON.stringify({selectedBy:'All'});
     public selectedById = JSON.stringify({selectedBy:'ById'});
     public token: any = null;
+    public username: any = null;
 
     private operationUrl = environment.baseUrl + 'Operations/';
     private photoUrl = environment.baseUrl + 'Photos/';
