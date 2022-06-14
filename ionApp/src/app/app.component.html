@@ -1,29 +1,46 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
+    <ion-header  [translucent]="false">
+        <ion-toolbar class="test">
+            <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <div class="notife">
+                <span (click)="navigateToNotifications()">
+                    <ion-icon slot="start" [ios]="'notifications-sharp'" [md]="'notifications-sharp'"></ion-icon>
+                    <span class="badge">3</span>
+                </span>
+            </div>
+        </ion-toolbar>
+    </ion-header>
+    <ng-container>
+    <!-- <ng-container *ngIf="currentuser()"> -->
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
-
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
+        <ion-content>
+            <ion-list id="inbox-list">
+            <div class="menu-header-bg">
+            </div>
+            <div class="header-content">
+                <div class="user-avatar">
+                    <img src="../assets/images/filter.svg" alt="">
+                </div>
+                <ion-label>
+                    <h2>
+                        Abdelah Wahab  
+                    </h2>
+                    <p>User</p>
+                </ion-label>
+            </div>
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+                <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
     </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+</ng-container>
+    <div style="margin-top: 3rem;">
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+    </div>
 </ion-app>

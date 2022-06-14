@@ -1,0 +1,72 @@
+<ion-content [fullscreen]="true">
+    <div class="banner">
+        <img src="../../../assets/images/panner1.png" alt="" srcset="">
+
+        <div class="caption ion-padding">
+            Choose Your Favorite<br>Dream Car
+        </div>
+
+        <div class="search">
+            <ion-item lines="none" class="ion-no-padding">
+                <ion-icon slot="start" name="search-outline"></ion-icon>
+                <ion-input placeholder="Search Car"></ion-input>
+                <ion-button slot="end" color="primary">
+                    <img src="../../../assets/images/filter.svg" srcset="">
+                </ion-button>
+            </ion-item>
+        </div>
+    </div>
+
+    <div class="title">
+        <h2>Popular Renters</h2>
+        <p (click)="navigateToCars()">See All</p>
+    </div>
+
+    <div class="car-slider">
+        <ion-slides [options]="{loop:false,slidesPerView:'auto',zoom:false,grabCursor:true,centeredSlides:false,spaceBetween:5}">
+            <ion-slide class="ion-text-left">
+                <ion-card>
+                    <ion-card-header class="ion-no-padding">
+                        <img src="../../../assets/images/intro2.jpg" alt="">
+                    </ion-card-header>
+                    <ion-card-content>
+                        <div class="stars">
+                            <div class="star">
+                                <ion-icon name="star"></ion-icon>
+                                <span>4.5</span>
+                            </div>
+
+                            <div class="price">
+                                <span>350 $</span>/d
+                            </div>
+
+                        </div>
+                        <span class="categorie">{{'coupe' | titlecase}}</span>
+                        <h2 style="padding-bottom:5px;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100%;" class="name">{{'car volvo'|titlecase}}</h2>
+                        <p style="padding-bottom:5px;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100%;" class="description">{{'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia minima fuga, dolore rem illum dicta quasi libero consectetur reiciendis, ad animi, possimus consequuntur incidunt nesciunt tempora. Nihil nesciunt iste voluptate.'|titlecase}}</p>
+                        <ion-button>More Details</ion-button>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+            <ion-slide class="ion-text-left">
+                <ion-card>
+                    <ion-card-header class="ion-no-padding">
+                        <img src="../../../assets/images/intro2.jpg" alt="">
+                    </ion-card-header>
+                    <ion-card-content>
+                        <p class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <span>4.6</span>
+                        </p>
+                        <span class="categorie">{{'coupe' | titlecase}}</span>
+                        <h2 style="padding-bottom:5px;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100%;" class="name">{{'car volvo'|titlecase}}</h2>
+                        <p style="padding-bottom:5px;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100%;" class="description">{{'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia minima fuga, dolore rem illum dicta quasi libero consectetur reiciendis, ad animi, possimus consequuntur incidunt nesciunt tempora. Nihil nesciunt iste voluptate.'|titlecase}}</p>
+
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+
+</ion-content>

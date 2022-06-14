@@ -1,0 +1,50 @@
+<ion-content>
+    <ion-refresher class="refrecher" slot="fixed" (ionRefresh)="doRefresh($event)">
+        <!-- <ion-spinner color="primary" class="page-loader"></ion-spinner> -->
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-slides [options]="options" class="ion-margin-top">
+        <ion-slide>
+            <ion-card class="ion-card">
+                <h2>All</h2>
+            </ion-card>
+        </ion-slide>
+        <ion-slide *ngFor="let item of marques">
+            <ion-card class="ion-card">
+                <img src="https://rumbustious-hilltop.000webhostapp.com/API/Photos/Marques/{{item.Photo}}">
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12">
+                <ion-card>
+                    <ion-item>
+                        <ion-label> <ion-icon name="locate"></ion-icon> <span>Categories</span></ion-label>
+                        <ion-select interface="popover" [(ngModel)]="selected" (ngModelChange)="helli()">
+                            <ion-select-option value="">All</ion-select-option>
+                            <ion-select-option *ngFor="let item of cate" [value]="item">{{item.Description}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12" sizeSm="12" sizeMd="4" sizeLg="4" *ngFor="let item of cars">
+                <ion-card style="height:23rem;">
+                    <ion-img src="https://rumbustious-hilltop.000webhostapp.com/API/Photos/cars/{{item.Photo}}"></ion-img>
+                    <ion-card-header>
+                        <ion-card-title>
+                            {{item.Name}}
+                        </ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content style="padding-bottom:5px;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100%;">
+                        {{item.Description}}
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+        <ion-spinner name="lines" color="primary" *ngIf="showPages" class="page-loader"></ion-spinner>
+    </ion-grid>
+</ion-content>

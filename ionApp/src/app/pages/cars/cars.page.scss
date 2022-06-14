@@ -1,0 +1,36 @@
+.page-loader{
+    top: 45%;
+    left: 45%;
+    position: fixed;
+}
+
+.ion-card{
+    width: 6.5rem;
+    height: 6.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ion-card img{
+    width: 100%;
+    height: 100%;
+}
+
+.ion-card h2{
+    font-weight: 500;
+}
+
+ion-label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-label span{
+    padding-left: .5rem;
+}
+
+.ios .refrecher{
+    background-color: white;
+    color: var(--ion-color-primaryy);
+}
