@@ -1,9 +1,59 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>notifications</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+
+    <div class="header">
+      <div class="title">
+        <h3>Notifications</h3>
+      </div>
+      <div class="makeRead">
+        <img src="./assets/images/mkasrd.png" alt="" srcset="">
+        <span>Mark as read</span>
+      </div>
+    </div>
+    <ion-list>
+      <ion-item-sliding>
+        <ion-item class="d-flex">
+            <div class="row">
+                <div class="content">
+                    <span></span>
+                </div>
+                <div class="content">
+                    <label>Pokémon Yellow</label>
+                    <p>Lorem consectetur adipisicing elit. Quisquam repellat quo debitis perspiciatis.</p>
+                    <label>Jul 23,2021 at 09:15 AM</label>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item-options>
+          <ion-item-option>
+            Delete
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>Mega Man X</ion-label>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option>
+            Delete
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>The Legend of Zelda</ion-label>
+        </ion-item>
+
+        <ion-item-options side="start" (ionSwipe)="delete()">
+          <ion-item-option color="danger" expandable (click)="delete()">
+            Delete
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
 
 </ion-content>

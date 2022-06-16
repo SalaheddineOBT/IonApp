@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from './providers/api.service';
 @Component({
@@ -6,7 +6,10 @@ import { ApiService } from './providers/api.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+    public isLog = false;
+
     public appPages = [
         { title: 'Home', url: '/home', icon: 'home' },
         { title: 'Cars', url: '/cars', icon: 'car' },
@@ -15,11 +18,17 @@ export class AppComponent {
         { title: 'Account', url: '/account', icon: 'person' },
     ];
 
+    username: any;
+
+
     constructor(private api: ApiService, private router: Router) {
+        this.username = this.api.username;
     }
 
-    currentuser(): boolean{
-        return this.api.token;
+    ngOnInit(): void {
+        if(!this.username){
+            this.router.navigate(['/login']);
+        }
     }
 
     navigateToNotifications = () => this.router.navigate(['/notifications']);

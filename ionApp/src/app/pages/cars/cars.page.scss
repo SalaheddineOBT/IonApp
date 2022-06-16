@@ -6,7 +6,7 @@
 
 .ion-card{
     width: 3.5rem;
-    height: 3rem;
+    height: 3.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,14 +108,30 @@ ion-label span{
 }
 .md{
     .carCard{
-        height: 18rem; 
+        height: 18rem;
+        width: 90%;
+        padding: 0!important;
         border-radius: 20px;
+        margin: auto;
+        margin-top: 2rem;
     }
 }
 
 .ios{
     .carCard{
         height: 20rem; 
+        width: 90%;
+        margin: auto;
         border-radius: 20px;
+        margin-top: 2rem;
+    }
+}
+
+ion-col{
+    padding-bottom: 0;
+
+    ion-card{
+        width: 100%;
+        margin-left: 0;
     }
 }

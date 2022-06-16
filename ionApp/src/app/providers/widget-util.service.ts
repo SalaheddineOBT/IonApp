@@ -41,5 +41,27 @@ export class WidgetUtilService {
         });
     }
 
+    openSuccessModel(titl: any, message: any){
+        Swal.fire({
+            title: titl,
+            text: message,
+            icon: 'success',
+            confirmButtonColor: '#107FB6',
+            confirmButtonText: 'OK',
+            heightAuto: false
+        });
+    }
+
+    openErrorModel(titl: any, message: any){
+        Swal.fire({
+            title: titl,
+            text: message,
+            icon: 'error',
+            confirmButtonColor: 'danger',
+            confirmButtonText: 'OK',
+            heightAuto: false
+        });
+    }
+
 
 }

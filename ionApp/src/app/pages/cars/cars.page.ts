@@ -90,8 +90,13 @@ export class CarsPage implements OnInit {
     }
 
     toogleStar(){
-        let v = !this.star;
-        this.path = './assets/images/star.png';
+        const v = !this.star;
+        if(v === true){
+            this.path = './assets/images/star.png';
+        } else {
+            this.path = './assets/images/favorite.png';
+        }
+
         this.star = v;
     }
 

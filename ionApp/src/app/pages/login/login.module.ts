@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -15,6 +15,7 @@ import { ApiService } from 'src/app/providers/api.service';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     LoginPageRoutingModule,
     HttpClientModule
   ],

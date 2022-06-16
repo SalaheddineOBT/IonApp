@@ -1,0 +1,46 @@
+.header{
+    margin-top: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    .title{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h3{
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+    }
+
+    .makeRead{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img{
+            width: 2rem;
+            height: 2.2rem;
+        }
+
+        span{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0d6c9b;
+            padding-top: .3rem;
+            padding-left: .3rem;
+        }
+    }
+}
+.d-flex{
+    display: flex;
+    .row{
+
+
+    }
+}
