@@ -1,0 +1,6 @@
+ionic platform add android
+ionic platform add ios
+https://dribbble.com/shots/17020453-Notifications/attachments/12102501?mode=media
+https://dribbble.com/shots/15131492-uStock-Profile-Community/attachments/6867392?mode=media
+https://jamesonsaunders.com/
+https://www.youtube.com/watch?v=iQ_0Fd_N3Mk
