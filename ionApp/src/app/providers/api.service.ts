@@ -59,6 +59,10 @@ export class ApiService {
         });
     }
 
+    getCarById(id: any) {
+        return this.httpClient.post(this.operationUrl + `Cars/cars.php?id=${id}`, this.selectedById);
+    };
+
     register(i: any) {
         return this.httpClient.post(this.operationUrl + 'Authentification/Register.php', i);
     }
@@ -72,5 +76,7 @@ export class ApiService {
             console.log(d);
         }));
     }
+
+
 
 }

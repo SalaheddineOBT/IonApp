@@ -1,9 +1,82 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>car-details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <div class="container">
+        <div class="test">
+            <div>
+                <h1>{{data.Name}} </h1>
+                <span>{{data.Categorie}}</span>
+            </div>
+            <img  src="./assets/images/favorite.png" alt="" >
+        </div>
+        <div style="width: 100%;">
+            <img src="https://rumbustious-hilltop.000webhostapp.com/API/Photos/cars/{{data.Photo}}" alt="">
+        </div>
+        <div>
+            <h1 style="font-size: 18px; margin-bottom: 1rem;font-weight: 600;">Car Specs</h1>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+            <div class="zed">
+                <p>max-power</p>
+                <span class="speedcar"> {{data.KM}} </span><br>
+                <span class="descr">hp</span>
+            </div>
+            <div class="zed">
+                <p>0 - 60 mph</p>
+                <span class="speedcar">4.4</span><br>
+                <span class="descr">sec .</span>
+            </div>
+            <div class="zed">
+                <p>Top Speed</p>
+                <span class="speedcar">177</span><br>
+                <span class="descr">mph</span>
+            </div>
+        </div>
+        <div>
+            <h1 style="font-size: 18px;margin-bottom: 1rem;font-weight: 600;">Car Info</h1>
+        </div>
+        <div class="moroo">
+            <div>
+                <div class="testtttt">
+                    <img src="./assets/images/users.png" alt="">
+                    <span>{{data.PlaceNumber}} Passengers</span>
 
+                </div>
+                <div class="testtttt">
+                    <img src="./assets/images/freezer.png" alt="">
+                    <span>Air Conditioning</span>
+                </div>
+                <div class="testtttt">
+                    <img src="./assets/images/speedometer.png" alt="">
+                    <span>Unlimited Milieage</span>
+                </div>
+                <div class="testtttt">
+                    <img src="./assets/images/location.png" alt="">
+                    <span>With GPS</span>
+                </div>
+            </div>
+            <div>
+                <div class="testtttt">
+                    <img src="./assets/images/car.png" alt="">
+                    <span>{{data.NumbreDoors}} Doors</span>
+                </div>
+                <div class="testtttt">
+                    <img src="./assets/images/manual.png" alt="">
+                    <span>{{data.CarType}}</span>
+                </div>
+                <div class="testtttt">
+                    <img src="./assets/images/gas-station.png" alt="">
+                    <span>{{data.Fuel}}:Full to Full</span>
+                </div>
+                <div class="testtttt">
+                    <img src="./assets/images/airbag.png" alt="">
+                    <span>With Airbag</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </ion-content>

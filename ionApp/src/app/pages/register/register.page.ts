@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/providers/api.service';
 import { FormValidationService } from 'src/app/providers/form/form-validation.service';
 import { WidgetUtilService } from 'src/app/providers/widget-util.service';
@@ -11,7 +11,7 @@ import { WidgetUtilService } from 'src/app/providers/widget-util.service';
 })
 export class RegisterPage implements OnInit {
 
-    registerForm: any = [];
+    registerForm: FormGroup;
 
     constructor(
         private fb: FormBuilder,
@@ -58,7 +58,7 @@ export class RegisterPage implements OnInit {
                 ]),
             ],
             confirm: [
-                '',
+                null,
                 Validators.compose([
                     Validators.required,
                     Validators.minLength(8),
@@ -70,19 +70,19 @@ export class RegisterPage implements OnInit {
         });
     }
 
+
     register() {
-        if(this.registerForm.valid){
+        if (this.registerForm.valid) {
             const data = JSON.stringify(this.registerForm.value);
             console.log(data);
-            // this.apiService.register(data).subscribe((res: any) => {
-            //     if(res.success){
-            //         this.widdgetApi.openSuccessModel('Success Register',res.message);
-            //     }else{
-            //         this.widdgetApi.openSuccessModel('Error !',res.message);
-            //     }
-            // });
+            this.apiService.register(data).subscribe((res: any) => {
+                if(res.success){
+                    this.widdgetApi.openSuccessModel('Success Register',res.message);
+                }else{
+                    this.widdgetApi.openSuccessModel('Error !',res.message);
+                }
+            });
         }
-
     }
 
     getErrorMessage(fieldName: string) {
@@ -94,7 +94,7 @@ export class RegisterPage implements OnInit {
 
     private passwordMatchValidator(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
-            const passwordVal = this.registerForm?.get('password')?.value;
+            const passwordVal = this.registerForm?.value.password;
             const forbidden = control.value !== passwordVal;
             return forbidden ? { mismatch: true } : null;
         };

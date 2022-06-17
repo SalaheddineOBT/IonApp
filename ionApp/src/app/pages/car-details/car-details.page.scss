@@ -1,0 +1,53 @@
+
+.container{
+    padding-left: 15px ;
+    padding-right: 15px ;
+}
+.test{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .6rem;
+    img{
+        width: 2.5rem;
+        padding-right: 0.3rem;
+    }
+    h1{
+        font-size: 22px;
+        font-weight: 600;
+    }
+    span{
+        font-weight: 400;
+        color: #888888;
+    }
+}
+.zed{
+    border: solid 1px #ddd;
+    border-radius: 10px;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    p{
+        margin-top: 0;
+        font-weight: 400;
+        color: #888888;
+    }
+    .speedcar{
+        font-weight: 600;
+        color: #323232;
+    }
+    .descr{
+        color: #888888;
+    }
+}
+.moroo{
+    display: flex;
+    justify-content: space-between;
+}
+.testtttt{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.3rem;
+    img{
+        width: 20px;
+        margin-right: 1rem;
+    }
+}
