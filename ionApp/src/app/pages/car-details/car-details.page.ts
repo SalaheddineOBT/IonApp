@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { ApiService } from 'src/app/providers/api.service';
 import { WidgetUtilService } from 'src/app/providers/widget-util.service';
 
@@ -17,6 +18,7 @@ export class CarDetailsPage implements OnInit {
         private router: Router,
         private routAct: ActivatedRoute,
         private apiService: ApiService,
+        private model: ModalController,
         private widgetApi: WidgetUtilService
     ) { }
 
@@ -24,7 +26,8 @@ export class CarDetailsPage implements OnInit {
         if(!localStorage.getItem('username')){
             this.router.navigate(['/login']);
         }else{
-            this.id =this.routAct.snapshot.paramMap.get('id');
+            // this.id =this.routAct.snapshot.paramMap.get('id');
+            this.id = this.apiService.idCarToModel;
             this.fillCar(this.id);
         }
     }
@@ -36,7 +39,13 @@ export class CarDetailsPage implements OnInit {
             }else{
                 this.widgetApi.toast(res.message,'danger');
             }
-            console.log('data', this.data)
+            console.log('data', this.data);
+        });
+    }
+
+    async close(){
+        await this.model.dismiss({
+            dismissed: true
         });
     }
 

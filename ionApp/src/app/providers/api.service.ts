@@ -18,6 +18,8 @@ export class ApiService {
     public token: any = null;
     public username: any = null;
 
+    public idCarToModel: any;
+
     private operationUrl = environment.baseUrl + 'Operations/';
 
     constructor(
