@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
         { title: 'Notifications', url: '/notifications', icon: 'notifications' },
         { title: 'Favorites', url: '/favorites', icon: 'heart' },
         { title: 'Account', url: '/account', icon: 'person' },
+        { title: 'Logout', url: '/login', icon: 'log-out' },
     ];
 
     username: any;
@@ -25,10 +26,14 @@ export class AppComponent implements OnInit {
         this.username = this.api.username;
     }
 
-    ngOnInit(): void {
-        if(!this.username){
-            this.router.navigate(['/login']);
+    ngOnInit(): void {}
+
+    isLogedIn() {
+        if(localStorage.getItem('username'))
+        {
+            return true;
         }
+        return false;
     }
 
     navigateToNotifications = () => this.router.navigate(['/notifications']);

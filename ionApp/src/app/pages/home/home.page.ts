@@ -11,6 +11,7 @@ import { WidgetUtilService } from 'src/app/providers/widget-util.service';
 export class HomePage implements OnInit {
 
     cars: any = [];
+    searchKey: any = '';
 
     path: any = './assets/images/favorite.png';
     star: boolean;
@@ -22,7 +23,11 @@ export class HomePage implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.fillCars();
+        if(!localStorage.getItem('username')){
+            this.router.navigate(['/login']);
+        }else{
+            this.fillCars();
+        }
     }
 
     navigateToCars = () => this.router.navigate(['/cars']);
@@ -41,6 +46,11 @@ export class HomePage implements OnInit {
         let v = !this.star;
         this.path = './assets/images/star.png';
         this.star = v;
+    }
+
+    changing(e: any) {
+        this.searchKey = (e.target as HTMLInputElement).value;
+        this.apiService.search.next(this.searchKey);
     }
 
 }

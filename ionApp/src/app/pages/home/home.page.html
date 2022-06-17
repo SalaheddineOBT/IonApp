@@ -7,7 +7,7 @@
         <div class="search">
             <ion-item lines="none" class="ion-no-padding">
                 <ion-icon slot="start" name="search-outline"></ion-icon>
-                <ion-input placeholder="Search Car"></ion-input>
+                <ion-input [ngModel]="searchKey" placeholder="Search Car" (input)="changing($event)"></ion-input>
                 <ion-button slot="end" color="primary">
                     <img src="../../../assets/images/filter.svg" srcset="">
                 </ion-button>
@@ -20,7 +20,7 @@
     </div>
     <div class="car-slider">
         <ion-slides [options]="{loop:false,slidesPerView:'auto',zoom:false,grabCursor:true,centeredSlides:false,spaceBetween:5}">
-            <ion-slide class="ion-text-left" *ngFor="let item of cars">
+            <ion-slide class="ion-text-left" *ngFor="let item of cars | filterMarques:searchKey:'Name'">
                 <ion-card class="carCard">
                     <ion-card-header style="padding-bottom: 0">
                         <ion-card-title class="hidenn">

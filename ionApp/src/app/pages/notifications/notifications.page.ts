@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/providers/notification.service';
 
 @Component({
@@ -8,14 +9,28 @@ import { NotificationService } from 'src/app/providers/notification.service';
 })
 export class NotificationsPage implements OnInit {
 
-  constructor(private notificationService: NotificationService) { }
+    notifications: any = [];
+    constructor(
+        private notificationService: NotificationService,
+        private router: Router
+    ) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        if(!localStorage.getItem('username')){
+            this.router.navigate(['/login']);
+        }else{
+            this.initNotife();
+        }
+    }
 
-  async delete(){
-    // console.log('clicked !');
-    const id = JSON.stringify({idClient:2});
-    await this.notificationService.getNotifications(id);
-  }
+    async initNotife(){
+        const id = JSON.stringify({idClient:2});
+        await this.notificationService.getNotifications(id).subscribe((res: any) => {
+            this.notifications = res.Notifications;
+        });
+    }
+
+    async delete(){
+        console.log('clicked !');
+    }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/providers/api.service';
 import { WidgetUtilService } from 'src/app/providers/widget-util.service';
 
@@ -10,6 +11,7 @@ import { WidgetUtilService } from 'src/app/providers/widget-util.service';
 export class CarsPage implements OnInit {
 
     cars: any = [];
+    public filterMarques: any = [];
     star: boolean;
     showPages: boolean;
     marques: any=[];
@@ -27,21 +29,27 @@ export class CarsPage implements OnInit {
 
     constructor(
         private apiService: ApiService,
-        private widgetUtile: WidgetUtilService
+        private widgetUtile: WidgetUtilService,
+        private router: Router
     ) {
     }
 
     ngOnInit() {
-        this.showPages=true;
-        this.fillCars();
-        this.fillMarques();
-        this.fillCategories();
+        if(!localStorage.getItem('username')){
+            this.router.navigate(['/login']);
+        }else{
+            this.showPages=true;
+            this.fillCars();
+            this.fillMarques();
+            this.fillCategories();
+        }
     }
 
     fillCars(){
         this.apiService.getCars().subscribe((res: any)=>{
             if(res.success){
                 this.cars=res.Cars;
+                this.filterMarques = res.Cars;
                 this.showPages=false;
             }else{
                 this.widgetUtile.toast(res.message,'danger');
@@ -80,7 +88,6 @@ export class CarsPage implements OnInit {
     }
 
     doRefresh(event: any) {
-        const i =JSON.stringify({selectedBy:'All'});
         setTimeout(() => {
             this.fillCars();
             this.fillCategories();
@@ -98,6 +105,14 @@ export class CarsPage implements OnInit {
         }
 
         this.star = v;
+    }
+
+    public filter(marque: string) {
+        this.filterMarques = this.cars.filter((a: any) => {
+            if (a.Marque === marque || marque === '') {
+                return a;
+            }
+        });
     }
 
 }

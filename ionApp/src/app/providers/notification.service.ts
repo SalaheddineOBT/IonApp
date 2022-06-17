@@ -11,13 +11,8 @@ export class NotificationService {
 
     constructor(private httpClient: HttpClient) { }
 
-    getNotifications(id: any): Promise<void>{
-        return new Promise((resolve,rejects) => {
-            this.httpClient.post(this.operationUrl + 'Notifications/notifications.php',id)
-            .subscribe((d: any) => {
-                console.log(d);
-            });
-        });
+    getNotifications(id: any){
+        return this.httpClient.post(this.operationUrl + 'Notifications/notifications.php',id);
     }
 
 }

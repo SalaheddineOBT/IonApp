@@ -40,7 +40,15 @@
 .d-flex{
     display: flex;
     .row{
+        padding-bottom: .8rem;
+        padding-top: .8rem;
 
-
+        h6{
+            font-weight: 500;
+        }
     }
+}
+ion-icon{
+    width: 2rem;
+    height: 2rem;
 }

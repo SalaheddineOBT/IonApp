@@ -18,6 +18,9 @@ export class LoginPage implements OnInit {
     constructor(private apiService: ApiService, private widgetApi: WidgetUtilService, private router: Router,private fb: FormBuilder) { }
 
     ngOnInit() {
+        if(localStorage.getItem('username')){
+            localStorage.clear();
+        }
         /*let i = JSON.stringify({selectedBy : 'All'});
         this.apiService.getCars(i).subscribe((res : any) => {
             console.log(res);
