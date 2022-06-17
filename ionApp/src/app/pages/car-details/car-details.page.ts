@@ -13,6 +13,7 @@ export class CarDetailsPage implements OnInit {
 
     id: any;
     data: any = [];
+    show: any = true;
 
     constructor(
         private router: Router,
@@ -26,8 +27,12 @@ export class CarDetailsPage implements OnInit {
         if(!localStorage.getItem('username')){
             this.router.navigate(['/login']);
         }else{
-            // this.id =this.routAct.snapshot.paramMap.get('id');
-            this.id = this.apiService.idCarToModel;
+            if(this.routAct.snapshot.paramMap.get('id')){
+                this.id =this.routAct.snapshot.paramMap.get('id');
+            }else{
+                this.id = this.apiService.idCarToModel;
+                this.show = this.apiService.show;
+            }
             this.fillCar(this.id);
         }
     }

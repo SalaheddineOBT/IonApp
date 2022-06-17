@@ -28,6 +28,8 @@ export class CarsPage implements OnInit {
     };
 
     numTime: number;
+    page = 1;
+    max = 0;
 
     selected: any;
 
@@ -57,6 +59,7 @@ export class CarsPage implements OnInit {
             this.apiService.getCars().subscribe((res: any)=>{
                 if(res.success){
                     this.cars=res.Cars;
+                    this.max = res.Cars.length;
                     this.filterMarques = res.Cars;
                     this.showPages=false;
                     resolve();
@@ -136,6 +139,7 @@ export class CarsPage implements OnInit {
 
     async openModel(id: any){
         this.apiService.idCarToModel = id;
+        this.apiService.show = false;
         const model = await this.model.create({
             component: CarDetailsPage,
             breakpoints: [0.1, 0.5, 1],
@@ -165,9 +169,12 @@ export class CarsPage implements OnInit {
 
     loadData(e: any){
         setTimeout(() => {
+            this.fillCars();
+            this.fillCategories();
+            this.fillMarques();
             e.target.complete();
-            if (this.cars.length === 1000) {
-                // event.target.disabled = true;
+            if (this.cars.length === this.max) {
+                e.target.disabled = true;
             }
         }, 2000);
     }

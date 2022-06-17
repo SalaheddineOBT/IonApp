@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
 
     constructor(private api: ApiService, private router: Router) {
-        this.username = this.api.username;
+        this.username = localStorage.getItem('username');
     }
 
     ngOnInit(): void {}

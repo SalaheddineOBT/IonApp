@@ -1,3 +1,8 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>cars</ion-title>
+    </ion-toolbar>
+</ion-header>
 <ion-content>
     <ion-refresher class="refrecher" style="margin-top: 3rem;" slot="fixed" (ionRefresh)="doRefresh($event)">
         <!-- <ion-spinner color="primary" class="page-loader"></ion-spinner> -->
@@ -79,7 +84,7 @@
 
                 </ion-card>
             </ion-col>
-            <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll threshold="5%" (ionInfinite)="loadData($event)">
                 <ion-infinite-scroll-content
                     loadingSpinner="bubbles"
                     loadingText="Loading more data...">
