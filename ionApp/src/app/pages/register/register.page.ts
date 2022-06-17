@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/providers/api.service';
 import { FormValidationService } from 'src/app/providers/form/form-validation.service';
+import { WidgetUtilService } from 'src/app/providers/widget-util.service';
 
 @Component({
     selector: 'app-register',
@@ -14,7 +16,8 @@ export class RegisterPage implements OnInit {
     constructor(
         private fb: FormBuilder,
         private formValidationService: FormValidationService,
-        private A
+        private apiService: ApiService,
+        private widdgetApi: WidgetUtilService
     ) { }
 
     ngOnInit() {
@@ -51,16 +54,34 @@ export class RegisterPage implements OnInit {
                     Validators.required,
                     Validators.minLength(8),
                     Validators.maxLength(16),
-                    Validators.pattern(
-                        '(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'
-                    ),
+                    Validators.pattern('(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'),
                 ]),
             ],
-            confirm: ['', Validators.required],
+            confirm: [
+                '',
+                Validators.compose([
+                    Validators.required,
+                    Validators.minLength(8),
+                    Validators.maxLength(16),
+                    Validators.pattern('(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'),
+                    this.passwordMatchValidator()
+                ])
+            ]
         });
     }
 
     register() {
+        if(this.registerForm.valid){
+            const data = JSON.stringify(this.registerForm.value);
+            console.log(data);
+            // this.apiService.register(data).subscribe((res: any) => {
+            //     if(res.success){
+            //         this.widdgetApi.openSuccessModel('Success Register',res.message);
+            //     }else{
+            //         this.widdgetApi.openSuccessModel('Error !',res.message);
+            //     }
+            // });
+        }
 
     }
 
@@ -69,6 +90,14 @@ export class RegisterPage implements OnInit {
             fieldName,
             this.registerForm
         );
+    }
+
+    private passwordMatchValidator(): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const passwordVal = this.registerForm?.get('password')?.value;
+            const forbidden = control.value !== passwordVal;
+            return forbidden ? { mismatch: true } : null;
+        };
     }
 
 }

@@ -48,7 +48,7 @@ export class FormValidationService {
         :
         formField?.hasError('mismatch')
         ?
-        'Passwords mismatch !'
+        'Confirm Password Incorrect !'
         :
         'Unknown error !';
     }
