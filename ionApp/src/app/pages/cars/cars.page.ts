@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, NavController, PopoverController } from '@ionic/angular';
 import { ApiService } from 'src/app/providers/api.service';
+import { FavouritesService } from 'src/app/providers/favourites/favourites.service';
 import { WidgetUtilService } from 'src/app/providers/widget-util.service';
 import { CarDetailsPage } from '../car-details/car-details.page';
 
@@ -32,7 +33,8 @@ export class CarsPage implements OnInit {
         private router: Router,
         private model: ModalController,
         private nav: NavController,
-        private popover: PopoverController
+        private popover: PopoverController,
+        private favoriteService: FavouritesService
     ) {
     }
 
@@ -153,6 +155,11 @@ export class CarsPage implements OnInit {
                 e.target.disabled = true;
             }
         }, 2000);
+    }
+
+    favourie(item: any){
+        // console.log(item);
+        this.favoriteService.addToFav(item);
     }
 
 

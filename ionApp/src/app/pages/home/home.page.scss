@@ -81,7 +81,7 @@ ion-content{
         display:flex;
         justify-content: space-between;
         margin-top: .3rem;
-        padding: 30px 26px 20px 20px;
+        padding: 30px 26px 0px 20px;
         align-items: center;
         
         h2{
@@ -223,4 +223,87 @@ ion-label span{
         width: 100%;
         border-radius: 20px;
     }
+}
+
+.anotherTitle{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 26px 5px 20px;
+
+    h3{
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #364f68;
+    }
+}
+
+.testimonial-box-container{
+    width: 100%;
+    margin-bottom: 2rem;
+
+    .testimonia-box{
+        width: 90%;
+        box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+        background-color: #fff;
+        padding: 20px;margin: 15px;
+        border-radius: 7px;
+
+        .box-top{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+            .profile{
+                display: flex;
+                align-items: center;
+
+                .prifile-img{
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                    overflow: hidden;
+        
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+
+                .name-user{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    strong{
+                        margin-left: 1rem;
+                        color:#3d3d3d;
+                        font-size: 1.1rem;
+                        letter-spacing: 0.5px;
+                    }
+                }
+            }
+
+            .reviews{
+                color: #f9d71c;
+                font-size: 1.1rem;
+            }
+        }
+
+        .coment{
+            width: 100%;
+
+            p{
+                font-size: 0.9rem;
+                color: #4b4b4b;
+                text-align: justify;
+            }
+        }
+    }
+    
 }

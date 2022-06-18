@@ -1,0 +1,150 @@
+.page-loader{
+    top: 45%;
+    left: 45%;
+    position: fixed;
+}
+
+.ion-card{
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 1rem 1rem 0.5rem 1rem;
+}
+.ion-card img{
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.ion-card h2{
+    font-weight: 500;
+}
+
+ion-label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-label span{
+    padding-left: .5rem;
+}
+
+.ios .refrecher{
+    background-color: white;
+    color: var(--ion-color-primaryy);
+}
+
+.hidenn{
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+.d-flex{
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    .ticket{
+        margin: 0;
+        font-size: 14px;
+        border-radius: 20px;
+        padding: 0.5rem;
+        border: 1px solid var(--ion-color-primaryy);
+        font-weight: 500;
+        color: var(--ion-color-primaryy);
+        transition: 0.2s linear;
+    }
+    .ticket:active{
+        background: var(--ion-color-primaryy);
+        color: white;
+    }
+}
+:host ::ng-deep{
+    .ion-margin-top{
+        margin-top: 0 !important;
+    }
+    .swiper-wrapper{
+        margin-bottom: 0.5rem;
+    }
+}
+.Brand{
+    font-weight: 600;
+}
+.test{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.NameCars{
+    font-size: 16px;
+    font-weight: 600;
+    font-family: revert;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 110px;
+    img{
+        width: 37%;
+        margin-right: 0.2rem;
+    }
+}
+.Categorie{
+    padding: 1px;
+}
+.testtt{
+    display: flex;
+    align-items: center;
+}
+.testttttttt{
+    width: 100%;
+    height: 150px;
+}
+.md{
+    .carCard{
+        height: 18rem;
+        width: 90%;
+        padding: 0!important;
+        border-radius: 20px;
+        margin: auto;
+        margin-top: 2rem;
+    }
+}
+
+.ios{
+    .carCard{
+        height: 20rem; 
+        width: 90%;
+        margin: auto;
+        border-radius: 20px;
+        margin-top: 2rem;
+    }
+}
+
+ion-col{
+    padding-bottom: 0;
+
+    ion-card{
+        width: 100%;
+        margin-left: 0;
+    }
+}
+.title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 2.5rem;
+    padding-top: 1rem;
+
+    h3{
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+}

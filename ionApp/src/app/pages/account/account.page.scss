@@ -2,3 +2,64 @@
     padding-right: 1rem;
     color: #107fb6;
 }
+
+.container {
+    background-color: #ECEFF1;
+    width: 100%;
+    position: relative;
+    height: 30%;
+}
+.svg-background {
+    width: 100%;
+    margin-left: -0.5rem;
+    margin-top: -1.5rem;
+    height: 100%;
+    z-index: 3;
+    background-color: #107fb6;
+    -webkit-clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+    clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+}
+.svg-background2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;left: 0;
+    background-color: rgba(0, 0, 0, 0.295);
+    -webkit-clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+    clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+}
+.info{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    margin-top: 1rem;
+}
+.text-container {
+    text-align: left;
+    margin-left: 1rem;
+    padding-top: 1rem;
+}
+.title-text {
+    color: #125A8C;
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: -.5rem;
+    margin-bottom: .3rem;
+}
+.info-text {
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    color:#107fb6;
+}

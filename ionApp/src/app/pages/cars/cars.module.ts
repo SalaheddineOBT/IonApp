@@ -9,6 +9,7 @@ import { CarsPageRoutingModule } from './cars-routing.module';
 
 import { CarsPage } from './cars.page';
 import { ApiService } from 'src/app/providers/api.service';
+import { FavouritesService } from 'src/app/providers/favourites/favourites.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { ApiService } from 'src/app/providers/api.service';
     HttpClientModule,
     CarsPageRoutingModule
   ],
-  providers:[ApiService],
+  providers:[ApiService,FavouritesService],
   declarations: [CarsPage]
 })
 export class CarsPageModule {}

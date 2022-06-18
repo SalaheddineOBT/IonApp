@@ -21,12 +21,12 @@
                     <div class="menu-header-bg">
                     </div>
                     <div class="header-content">
-                        <div class="user-avatar">
-                            <img src="../assets/images/user.jpg" alt="">
+                        <div id="app-bar">
+                            <div id="logo">
+                                <ion-icon name="car-sharp"></ion-icon>
+                                <span>Car Rental App</span>
+                            </div>
                         </div>
-                        <ion-label>
-                            <h2>Car Rental</h2>
-                        </ion-label>
                     </div>
                     <ion-menu-toggle auto-hide="false">
                         <ion-item  *ngFor="let p of appPages; let i = index" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
