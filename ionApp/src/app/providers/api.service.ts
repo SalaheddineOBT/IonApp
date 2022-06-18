@@ -12,11 +12,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ApiService {
 
     public search = new BehaviorSubject<string>('');
-    isLogin = false;
     public selectedall = JSON.stringify({ selectedBy: 'All' });
     public selectedById = JSON.stringify({ selectedBy: 'ById' });
     public token: any = null;
-    public username: any = null;
 
     show: any = false;
 
@@ -26,8 +24,6 @@ export class ApiService {
 
     constructor(
         private httpClient: HttpClient,
-        private widgetApi: WidgetUtilService,
-        private router: Router
     ) { }
 
     getCars() {
@@ -42,25 +38,9 @@ export class ApiService {
         return this.httpClient.post(this.operationUrl + 'Categories/categories.php', this.selectedall);
     }
 
-    login(i: any): Promise<void> {
-        return new Promise((resolve, reject) => {
-            this.httpClient.post(this.operationUrl + 'Authentification/Login.php', i).subscribe((d: any) => {
-                if (d.success) {
-                    localStorage.setItem('username','salaheddine');
-                    this.isLogin = true;
-                    this.token = d.token;
-                    this.getDataFromToken(this.token);
-                    resolve();
-                    // this.widgetApi.openSuccessModel('SuccessFull Login','You Will Redirect To Home .');
-                    this.router.navigate(['/home']);
+    login(i: any){
+        return this.httpClient.post(this.operationUrl + 'Authentification/Login.php', i);
 
-                } else {
-                    reject();
-                    this.widgetApi.openErrorModel('Error', d.message);
-                    this.isLogin = false;
-                }
-            });
-        });
     }
 
     getCarById(id: any) {
@@ -71,16 +51,8 @@ export class ApiService {
         return this.httpClient.post(this.operationUrl + 'Authentification/Register.php', i);
     }
 
-    getDataFromToken(token: any) {
-        this.httpClient.get(this.operationUrl + 'Authentification/Home.php', {
-        headers: new HttpHeaders({
-            'Authorization' : `Bearer ${token}`
-        })
-        }).subscribe((d => {
-            console.log(d);
-        }));
+    getUserId(token: any){
+        return this.httpClient.post(this.operationUrl + 'Authentification/Home.php',token);
     }
-
-
 
 }

@@ -1,3 +1,7 @@
+*{
+    font-family: sans-serif;
+}
+
 .header{
     margin-top: 4.5rem;
     display: flex;
@@ -44,7 +48,8 @@
         padding-top: .8rem;
 
         h6{
-            font-weight: 500;
+            font-weight: 600;
+            font-family: sans-serif;
         }
     }
 }

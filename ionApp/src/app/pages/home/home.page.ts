@@ -13,9 +13,6 @@ export class HomePage implements OnInit {
     cars: any = [];
     searchKey: any = '';
 
-    path: any = './assets/images/favorite.png';
-    star: boolean;
-
     constructor(
         private router: Router,
         private apiService: ApiService,
@@ -23,7 +20,7 @@ export class HomePage implements OnInit {
     ) { }
 
     ngOnInit() {
-        if(!localStorage.getItem('username')){
+        if(!localStorage.getItem('user')){
             this.router.navigate(['/login']);
         }else{
             this.fillCars();
@@ -40,12 +37,6 @@ export class HomePage implements OnInit {
                 this.widgetUtile.toast(res.message,'danger');
             }
         });
-    }
-
-    toogleStar(){
-        let v = !this.star;
-        this.path = './assets/images/star.png';
-        this.star = v;
     }
 
     changing(e: any) {

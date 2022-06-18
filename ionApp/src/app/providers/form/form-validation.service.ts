@@ -42,6 +42,10 @@ export class FormValidationService {
         ?
         'Password must contain numbers & upper/lower/special characters !'
         :
+        formField?.hasError('pattern') && fieldName === 'phone'
+        ?
+        'Phone Number Format is Incorrect !'
+        :
         formField?.hasError('pattern') && fieldName === 'email'
         ?
         'Incorrect Email Format !'

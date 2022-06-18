@@ -18,25 +18,26 @@
         <ion-menu contentId="main-content" type="overlay">
             <ion-content>
                 <ion-list id="inbox-list">
-                <div class="menu-header-bg">
-                </div>
-                <div class="header-content">
-                    <div class="user-avatar">
-                        <img src="../assets/images/user.jpg" alt="">
+                    <div class="menu-header-bg">
                     </div>
-                    <ion-label>
-                        <h2>
-                            {{username}} 
-                        </h2>
-                        <p>User</p>
-                    </ion-label>
-                </div>
-                <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-                    <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-                    <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                    <ion-label>{{ p.title }}</ion-label>
-                    </ion-item>
-                </ion-menu-toggle>
+                    <div class="header-content">
+                        <div class="user-avatar">
+                            <img src="../assets/images/user.jpg" alt="">
+                        </div>
+                        <ion-label>
+                            <h2>Car Rental</h2>
+                        </ion-label>
+                    </div>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item  *ngFor="let p of appPages; let i = index" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+                        <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                        <ion-label>{{ p.title }}</ion-label>
+                        </ion-item>
+                        <ion-item lines="none" routerLinkActive="selected" routerDirection="root" routerLink="/login" detail="false" (click)="logOut()">
+                        <ion-icon slot="start" [ios]="'log-out-outline'" [md]="'log-out-sharp'"></ion-icon>
+                        <ion-label>Logout</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
                 </ion-list>
             </ion-content>
         </ion-menu>

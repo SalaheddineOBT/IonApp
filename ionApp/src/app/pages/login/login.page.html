@@ -1,23 +1,53 @@
 <ion-content>
-    <form [formGroup]="loginForm">
-        <ion-item lines="full">
-            <ion-label position="floating">Email</ion-label>
-            <ion-input formControlName="email" type="text" required></ion-input>
-        </ion-item>
-        <ion-item lines="full">
-            <ion-label position="floating">Password</ion-label>
-            <ion-input formControlName="password" type="password" required></ion-input>
-
-        </ion-item>
-        <ion-row>
-            <ion-col>
-                <ion-button type="submit" color="primary" expand="block" (click)="login()">Sign In</ion-button>
-                <!-- <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a> -->
-            </ion-col>
-        </ion-row>
-    </form>
-
-    <!-- {{loginForm.value | json}} -->
-    <!-- <ion-button (click)="alert()">Hello</ion-button> -->
-
+    <div id="header">
+        <div id="app-bar">
+            <div id="logo">
+                <ion-icon name="car-sharp"></ion-icon>
+                <span>Car Rental</span>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <ion-card class="form-wrapper">
+            <div id="desc">
+                <h1>Hello Again !</h1>
+                <p>Sign in to discover amazing cars you like !</p>
+            </div>
+            <ion-card-content>
+                <form [formGroup]="loginForm">
+                    <ion-list lines="none">
+                        <ion-item>
+                            <ion-icon name="mail"></ion-icon>
+                            <input type="text" formControlName="email" placeholder="Enter Your Email">
+                        </ion-item>
+                        <span class="error" *ngIf="fieldHasError('email')">
+                            {{ getErrorMessage("email") }}
+                        </span>
+                        <ion-item style="margin-top: 1.3rem;">
+                            <ion-icon name="lock-closed"></ion-icon>
+                            <input type="password" formControlName="password" placeholder="Enter Your Password">
+                        </ion-item>
+                        <span class="error" *ngIf="fieldHasError('password')">
+                            {{ getErrorMessage("password") }}
+                        </span>
+                        <ion-button expand="block" (click)="login()">
+                            <span>Sign In</span>
+                            <svg style="padding-bottom: .6rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4-5 4v-3H2v-2h8z"></path>
+                            </svg>
+                        </ion-button>
+                    </ion-list>
+                </form>
+            </ion-card-content>
+            <div class="line-text">
+                <span class="lines"></span>
+                <span class="text">OR</span>
+            </div>
+            <div class="signUp">
+                <span> Don't Have An Account ?</span>
+                <span class="link" routerLink="/register">Sign Up</span>
+            </div>
+        </ion-card>
+    </div>
 </ion-content>

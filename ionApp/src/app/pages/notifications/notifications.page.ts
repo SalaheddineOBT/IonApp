@@ -16,7 +16,7 @@ export class NotificationsPage implements OnInit {
     ) { }
 
     ngOnInit() {
-        if(!localStorage.getItem('username')){
+        if(!localStorage.getItem('user')){
             this.router.navigate(['/login']);
         }else{
             this.initNotife();

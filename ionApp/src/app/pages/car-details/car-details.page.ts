@@ -24,7 +24,7 @@ export class CarDetailsPage implements OnInit {
     ) { }
 
     ngOnInit() {
-        if(!localStorage.getItem('username')){
+        if(!localStorage.getItem('user')){
             this.router.navigate(['/login']);
         }else{
             if(this.routAct.snapshot.paramMap.get('id')){

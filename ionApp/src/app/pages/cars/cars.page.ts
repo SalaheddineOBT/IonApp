@@ -14,12 +14,9 @@ export class CarsPage implements OnInit {
 
     cars: any = [];
     public filterMarques: any = [];
-    star: boolean;
     showPages: boolean;
     marques: any=[];
     cate: Array<any> = null;
-
-    path: any = './assets/images/favorite.png';
 
     options={
         slidesPerView:4,
@@ -27,11 +24,7 @@ export class CarsPage implements OnInit {
         loop:false,
     };
 
-    numTime: number;
-    page = 1;
     max = 0;
-
-    selected: any;
 
     constructor(
         private apiService: ApiService,
@@ -44,7 +37,7 @@ export class CarsPage implements OnInit {
     }
 
     async ngOnInit() {
-        if(!localStorage.getItem('username')){
+        if(!localStorage.getItem('user')){
             this.router.navigate(['/login']);
         }else{
             this.showPages=true;
@@ -93,8 +86,6 @@ export class CarsPage implements OnInit {
             this.apiService.getCategories().subscribe((res: any)=>{
                 if(res.success){
                     this.cate=res.Categories;
-                    this.selected='';
-                        // this.selected=this.cate[0];
                     resolve();
                 }else{
                     //   console.log(res.message);
@@ -105,10 +96,6 @@ export class CarsPage implements OnInit {
         });
     }
 
-    helli(){
-        console.log(this.selected);
-    }
-
     doRefresh(event: any) {
         setTimeout(() => {
             this.fillCars();
@@ -116,17 +103,6 @@ export class CarsPage implements OnInit {
             this.fillMarques();
         (event.target as any).complete();
         }, 2000);
-    }
-
-    toogleStar(){
-        const v = !this.star;
-        if(v === true){
-            this.path = './assets/images/star.png';
-        } else {
-            this.path = './assets/images/favorite.png';
-        }
-
-        this.star = v;
     }
 
     public filter(marque: string) {

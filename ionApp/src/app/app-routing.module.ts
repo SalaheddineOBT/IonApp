@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'car-details/28',
+        redirectTo: 'intro',
         pathMatch: 'full'
     },
     {

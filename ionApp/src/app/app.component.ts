@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from './providers/api.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,20 +15,18 @@ export class AppComponent implements OnInit {
         { title: 'Notifications', url: '/notifications', icon: 'notifications' },
         { title: 'Favorites', url: '/favorites', icon: 'heart' },
         { title: 'Account', url: '/account', icon: 'person' },
-        { title: 'Logout', url: '/login', icon: 'log-out' },
     ];
 
     username: any;
 
-
-    constructor(private api: ApiService, private router: Router) {
+    constructor(private router: Router) {
         this.username = localStorage.getItem('username');
     }
 
     ngOnInit(): void {}
 
     isLogedIn() {
-        if(localStorage.getItem('username'))
+        if(localStorage.getItem('user'))
         {
             return true;
         }
@@ -37,5 +34,10 @@ export class AppComponent implements OnInit {
     }
 
     navigateToNotifications = () => this.router.navigate(['/notifications']);
+
+    logOut = () => {
+        localStorage.clear();
+        this.router.navigate(['/login']);
+    };
 
 }

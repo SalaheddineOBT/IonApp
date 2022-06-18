@@ -8,13 +8,19 @@ import { Router } from '@angular/router';
 })
 export class AccountPage implements OnInit {
 
+    token: any;
+
     constructor(
         private router: Router
     ) { }
 
+
     ngOnInit() {
-        if(!localStorage.getItem('username')){
+        if(!localStorage.getItem('user')){
             this.router.navigate(['/login']);
+        }else{
+            // this.token = atob(localStorage.getItem('user'));
+            // alert(this.token);
         }
     }
 

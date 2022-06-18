@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/providers/api.service';
+import { FormValidationService } from 'src/app/providers/form/form-validation.service';
 import { WidgetUtilService } from 'src/app/providers/widget-util.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+    selector: 'app-login',
+    templateUrl: './login.page.html',
+    styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
 
@@ -15,29 +16,71 @@ export class LoginPage implements OnInit {
 
     loginForm: any = {};
 
-    constructor(private apiService: ApiService, private widgetApi: WidgetUtilService, private router: Router,private fb: FormBuilder) { }
+    constructor(
+        private fb: FormBuilder,
+        private formValidationService: FormValidationService,
+        private apiService: ApiService,
+        private widdgetApi: WidgetUtilService,
+        private router: Router
+    ) { }
 
     ngOnInit() {
-        if(localStorage.getItem('username')){
-            localStorage.clear();
-        }
-        /*let i = JSON.stringify({selectedBy : 'All'});
-        this.apiService.getCars(i).subscribe((res : any) => {
-            console.log(res);
-        });*/
         this.initeForm();
     }
 
     initeForm(){
         this.loginForm = this.fb.group({
-            email: ['',Validators.required],
-            password: ['',Validators.required]
+            email: [
+                '',
+                Validators.compose([
+                    Validators.required,
+                    Validators.email,
+                    Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{3,4}$/g),
+                    Validators.minLength(5),
+                    Validators.maxLength(30),
+                ])
+            ],
+            password: [
+                '',
+                Validators.compose([
+                    Validators.required,
+                    Validators.minLength(8),
+                    Validators.maxLength(16),
+                    Validators.pattern('(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'),
+                ]),
+            ],
         });
     }
 
-    async login(){
-        const i = JSON.stringify(this.loginForm.value);
-        await this.apiService.login(i);
+    fieldHasError(fieldName: string) {
+        return this.formValidationService.fieldHasError(fieldName, this.loginForm);
     }
+
+    getErrorMessage(fieldName: string) {
+        return this.formValidationService.getErrorMessage(
+            fieldName,
+            this.loginForm
+        );
+    }
+
+    login(){
+        if(this.loginForm.valid){
+            const i = JSON.stringify(this.loginForm.value);
+            this.apiService.login(i).subscribe((res: any)=>{
+                if(res.success){
+                    localStorage.setItem('user',btoa(res.token));
+                    this.router.navigate(['/home']);
+                    this.initeForm();
+                }else{
+                    this.widdgetApi.openErrorModel('Error !',res.message);
+                }
+            });
+        } else {
+            this.widdgetApi.openErrorModel('Error !','Fill All Required Fields !');
+        }
+    }
+
+
+
 
 }
