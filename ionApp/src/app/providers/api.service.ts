@@ -28,11 +28,11 @@ export class ApiService {
     ) { }
 
     getCars() {
-        return this.httpClient.post(this.operationUrl + 'Cars/cars.php', this.selectPopular);
+        return this.httpClient.post(this.operationUrl + 'Cars/cars.php', this.selectedall);
     }
 
     getPopularCars() {
-        return this.httpClient.post(this.operationUrl + 'Cars/cars.php', this.selectedall);
+        return this.httpClient.post(this.operationUrl + 'Cars/cars.php', this.selectPopular);
     }
 
     getMarques() {
@@ -67,6 +67,10 @@ export class ApiService {
                 'Authorization' : `Bearer ${token}`,
             })
         });
+    }
+
+    booking(data: any){
+        return this.httpClient.post(this.operationUrl + 'Reservations/Reserver.php', data);
     }
 
 }
