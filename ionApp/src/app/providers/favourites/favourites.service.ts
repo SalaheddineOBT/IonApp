@@ -12,13 +12,13 @@ export class FavouritesService {
 
     constructor() {
         // this.carsList.next(JSON.parse(localStorage.getItem('cars')));
-        this.favoriteList = JSON.parse(localStorage.getItem('cars'));
-        console.log(this.favoriteList);
+        // this.favoriteList = JSON.parse(localStorage.getItem('cars'));
+        // console.log(this.favoriteList);
     }
 
     addToFav(car: any){
-        console.log('deja existe !!!',this.favoriteList);
-        console.log('deja existe !!!',this.carsList);
+        // console.log('deja existe !!!',this.favoriteList);
+        // console.log('deja existe !!!',this.carsList);
         this.favoriteList.push(car);
         this.carsList.next(this.favoriteList);
         localStorage.setItem('cars',JSON.stringify(this.carsList.value));
@@ -44,7 +44,7 @@ export class FavouritesService {
                 // console.log(a.ID);
             }
         });
-        console.log(this.favoriteList);
+        // console.log(this.favoriteList);
     }
 
 }

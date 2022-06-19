@@ -42,7 +42,11 @@ const routes: Routes = [
     {
         path: 'car-details/:id',
         loadChildren: () => import('./pages/car-details/car-details.module').then(m => m.CarDetailsPageModule)
-    }
+    },
+  {
+    path: 'booking/:id',
+    loadChildren: () => import('./pages/booking/booking.module').then( m => m.BookingPageModule)
+  }
 ];
 
 @NgModule({

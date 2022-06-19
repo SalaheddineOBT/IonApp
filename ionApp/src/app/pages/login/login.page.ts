@@ -69,6 +69,7 @@ export class LoginPage implements OnInit {
             this.apiService.login(i).subscribe((res: any)=>{
                 if(res.success){
                     localStorage.setItem('user',btoa(res.token));
+                    // console.log(res.token);
                     this.router.navigate(['/home']);
                     this.initeForm();
                 }else{

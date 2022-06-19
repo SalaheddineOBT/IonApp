@@ -36,7 +36,8 @@ export class AppComponent implements OnInit {
     navigateToNotifications = () => this.router.navigate(['/notifications']);
 
     logOut = () => {
-        localStorage.clear();
+        // localStorage.clear();
+        localStorage.removeItem('user');
         this.router.navigate(['/login']);
     };
 

@@ -13,6 +13,7 @@ export class ApiService {
 
     public search = new BehaviorSubject<string>('');
     public selectedall = JSON.stringify({ selectedBy: 'All' });
+    public selectPopular = JSON.stringify({ selectedBy: 'Populaire' });
     public selectedById = JSON.stringify({ selectedBy: 'ById' });
     public token: any = null;
 
@@ -27,6 +28,10 @@ export class ApiService {
     ) { }
 
     getCars() {
+        return this.httpClient.post(this.operationUrl + 'Cars/cars.php', this.selectPopular);
+    }
+
+    getPopularCars() {
         return this.httpClient.post(this.operationUrl + 'Cars/cars.php', this.selectedall);
     }
 
@@ -53,6 +58,15 @@ export class ApiService {
 
     getUserId(token: any){
         return this.httpClient.post(this.operationUrl + 'Authentification/Home.php',token);
+    }
+
+    toHome(token: any){
+        return this.httpClient.get(this.operationUrl + 'Authentification/Home.php',{
+            headers: new HttpHeaders({
+                'content-type' : 'application/json',
+                'Authorization' : `Bearer ${token}`,
+            })
+        });
     }
 
 }

@@ -48,10 +48,11 @@ export class CarDetailsPage implements OnInit {
         });
     }
 
-    async close(){
+    async close(id){
         await this.model.dismiss({
             dismissed: true
         });
+        this.router.navigate(['/booking',id]);
     }
 
 }
