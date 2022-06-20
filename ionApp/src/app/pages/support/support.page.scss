@@ -1,0 +1,62 @@
+.head{
+    text-align: center;
+    width: 100%;
+    padding-top: 1.5rem;
+
+    h2{
+        font-weight: 700;
+        font-family: inherit;
+        color: #1E86C8;
+        padding: 0;
+    }
+
+    h4{
+        font-size: 1.1rem;
+        color: #abb2b9;
+    }
+}
+
+.cards{
+    padding: 1rem;
+
+    ion-card{
+        margin-top: 1.5rem;
+        background: #1E86C8;
+        display: flex;
+        align-items: center;
+        border-radius: .5rem;
+        padding: 1rem;
+        justify-content: center;
+
+        ion-card-content{
+            text-align: center;
+
+            .image{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-bottom: 1rem;
+
+                ion-icon{
+                    font-size: 2rem;
+                    color: #fff;
+                }
+            }
+
+            .content{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                span{
+                    color: #eee;
+                    font-size: 1.3rem;
+                    
+                    span{
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}

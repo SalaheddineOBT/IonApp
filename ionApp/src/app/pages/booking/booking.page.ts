@@ -16,7 +16,6 @@ export class BookingPage implements OnInit {
     public bookForm: FormGroup;
     public clientForm: FormGroup;
 
-
     id: any;
 
     today: any;
@@ -85,6 +84,10 @@ export class BookingPage implements OnInit {
 
     formatDate(value: string) {
         return format(parseISO(value), 'dd-MM-yyyy HH:mm');
+    }
+
+    booking(){
+        this.router.navigate(['/booking2']);
     }
 
 }

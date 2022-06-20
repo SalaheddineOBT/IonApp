@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class SupportPage implements OnInit {
 
     constructor(
-        private router: Router
+        private router: Router,
     ) { }
 
     ngOnInit() {

@@ -18,12 +18,13 @@ export class CarsPage implements OnInit {
     showPages: boolean;
     marques: any=[];
     cate: Array<any> = null;
-
     options={
         slidesPerView:4,
         centeredSlides:false,
         loop:false,
     };
+
+    contentLoader = false;
 
     max = 0;
 
@@ -36,6 +37,9 @@ export class CarsPage implements OnInit {
         private popover: PopoverController,
         private favoriteService: FavouritesService
     ) {
+        setTimeout(() => {
+            this.contentLoader = true;
+        },4000);
     }
 
     async ngOnInit() {
@@ -157,9 +161,14 @@ export class CarsPage implements OnInit {
         }, 2000);
     }
 
-    favourie(item: any){
+    favourie(item: any,check){
         // console.log(item);
         this.favoriteService.addToFav(item);
+        item.isFavorite = check;
+
+    }
+    disfavourie(item,chch){
+        item.isFavorite = chch;
     }
 
 

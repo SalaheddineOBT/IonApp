@@ -63,8 +63,9 @@ export class ApiService {
     toHome(token: any){
         return this.httpClient.get(this.operationUrl + 'Authentification/Home.php',{
             headers: new HttpHeaders({
+                'Access-Control-Allow-Headers': '*',
                 'content-type' : 'application/json',
-                'Authorization' : `Bearer ${token}`,
+                'authorization' : `Bearer ${token}`,
             })
         });
     }

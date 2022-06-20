@@ -8,22 +8,48 @@
         <!-- <ion-spinner color="primary" class="page-loader"></ion-spinner> -->
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
+        <ng-container *ngIf="contentLoader">
+            <div class="d-flex">
+                <div>
+                    <span class="Brand">Brands</span>
+                </div>
+                <div>
+                    <span class="ticket" (click)="filter('')">View All</span>
+                </div>
+            </div>
+        <ion-slides [options]="options" class="ion-margin-top">
+    
+            <ion-slide *ngFor="let item of marques">
+                <ion-card (click)="filter(item.Libelle)" class="ion-card">
+                    <img src="https://rumbustious-hilltop.000webhostapp.com/API/Photos/Marques/{{item.Photo}}">
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+        </ng-container>
+
+    <ng-container *ngIf="!contentLoader">
         <div class="d-flex">
             <div>
-                <span class="Brand">Brands</span>
+                <span class="Brand">
+                    <ion-skeleton-text animated style="width: 100px"></ion-skeleton-text>
+                </span>
             </div>
             <div>
-                <span class="ticket" (click)="filter('')">View All</span>
+                <span>
+                    <ion-skeleton-text animated style="width: 100px; height: 30px; border-radius: 20px;"></ion-skeleton-text>
+                </span>
             </div>
         </div>
     <ion-slides [options]="options" class="ion-margin-top">
 
         <ion-slide *ngFor="let item of marques">
             <ion-card (click)="filter(item.Libelle)" class="ion-card">
-                <img src="https://rumbustious-hilltop.000webhostapp.com/API/Photos/Marques/{{item.Photo}}">
+                <ion-skeleton-text animated style="width: 100%;height: 100%;"></ion-skeleton-text>
             </ion-card>
         </ion-slide>
     </ion-slides>
+    </ng-container>
+
     <ion-grid>
         <!-- <ion-row>
             <ion-col size="12">
@@ -39,7 +65,8 @@
             </ion-col>
         </ion-row> -->
         <ion-row>
-            <ion-col fixed style="margin-top: -.7rem;" *ngFor="let item of filterMarques">
+            <ng-container *ngIf="contentLoader">
+            <ion-col fixed style="margin-top: -.7rem;" *ngFor="let item of filterMarques; let i = index">
                 <ion-card class="carCard">
                     <ion-card-header style="padding-bottom: 0">
                         <ion-card-title class="hidenn">
@@ -48,7 +75,8 @@
                                     {{item.Name}}
                                 </div>
                                 <div>
-                                    <ion-icon slot="end" (click)="favourie(item)" name="star-outline"></ion-icon>
+                                    <ion-icon slot="end" (click)="favourie(item,true)" *ngIf="!item.isFavorite" name="star-outline"></ion-icon>
+                                    <ion-icon  (click)="disfavourie(item,false)" style="color: #FFBD00" *ngIf="item.isFavorite" slot="end" name="star"></ion-icon>
                                 </div>
                             </div>
                         </ion-card-title>
@@ -83,7 +111,56 @@
                     </ion-card-header>
 
                 </ion-card>
-            </ion-col>
+            </ion-col> 
+            </ng-container>
+            
+            <ng-container *ngIf="!contentLoader">
+                <ion-col fixed style="margin-top: -.7rem;" *ngFor="let item of filterMarques; let i = index">
+                    <ion-card class="carCard">
+                        <ion-card-header style="padding-bottom: 0">
+                            <ion-card-title class="hidenn">
+                                <div class="test">
+                                    <div class="NameCars">   
+                                        <ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+                                    </div>
+                                    <div>
+                                        <ion-skeleton-text animated style="width: 20px;height:20px ;"></ion-skeleton-text>
+                                    </div>
+                                </div>
+                            </ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content class="hidenn">
+                            <div class="Categorie">
+                                <ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text>
+                            </div>
+                        </ion-card-content>
+                        <ion-skeleton-text animated style="width: 90%; height: 50%;margin: auto;"></ion-skeleton-text>
+                        <ion-card-header style="padding-bottom: 0">
+                            <ion-card-title class="hidenn">
+                                <div class="test">
+                                    <div class="testtt">
+                                        <div class="NameCars">
+                                            <span style="display: flex;">
+                                                <ion-skeleton-text animated style="width: 100px;height:20px ;"></ion-skeleton-text>
+                                            </span>
+                                            <span style="display: flex;">
+                                                <ion-skeleton-text animated style="width: 50px;height:20px ;"></ion-skeleton-text>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span style="font-size: 15px;font-weight: 600;color: #107fb6;">
+                                            <ion-skeleton-text animated style="width: 50px;height:20px ;"></ion-skeleton-text>
+                                        </span>
+                                    </div>
+                                </div>
+                            </ion-card-title>
+                        </ion-card-header>
+    
+                    </ion-card>
+                </ion-col>
+            </ng-container>
+            
             <ion-infinite-scroll threshold="5%" (ionInfinite)="loadData($event)">
                 <ion-infinite-scroll-content
                     loadingSpinner="bubbles"
