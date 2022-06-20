@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { ApiService } from 'src/app/providers/api.service';
 import { FormValidationService } from 'src/app/providers/form/form-validation.service';
 import { WidgetUtilService } from 'src/app/providers/widget-util.service';
@@ -21,7 +22,8 @@ export class LoginPage implements OnInit {
         private formValidationService: FormValidationService,
         private apiService: ApiService,
         private widdgetApi: WidgetUtilService,
-        private router: Router
+        private router: Router,
+        private loadingCtrl: LoadingController
     ) { }
 
     ngOnInit() {
@@ -68,10 +70,14 @@ export class LoginPage implements OnInit {
             const i = JSON.stringify(this.loginForm.value);
             this.apiService.login(i).subscribe((res: any)=>{
                 if(res.success){
-                    localStorage.setItem('user',btoa(res.token));
-                    // console.log(res.token);
-                    this.router.navigate(['/home']);
-                    this.initeForm();
+                    this.loading();
+                    setTimeout(() => {
+                        localStorage.setItem('user',btoa(res.token));
+                        //console.log(res.token);
+                        this.router.navigate(['/home']);
+                        this.initeForm();
+                    },3000);
+
                 }else{
                     this.widdgetApi.openErrorModel('Error !',res.message);
                 }
@@ -79,6 +85,14 @@ export class LoginPage implements OnInit {
         } else {
             this.widdgetApi.openErrorModel('Error !','Fill All Required Fields !');
         }
+    }
+
+    async loading(){
+        const loading = await this.loadingCtrl.create({
+            message: 'Pleas Wait ....',
+            duration: 3000
+        });
+        return loading.present();
     }
 
 
