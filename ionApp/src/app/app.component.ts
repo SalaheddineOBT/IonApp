@@ -39,6 +39,7 @@ export class AppComponent implements OnInit {
         // localStorage.clear();
         localStorage.removeItem('user');
         this.router.navigate(['/login']);
+        window.location.reload();
     };
 
 }

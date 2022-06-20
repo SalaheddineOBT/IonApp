@@ -46,6 +46,18 @@ const routes: Routes = [
   {
     path: 'booking/:id',
     loadChildren: () => import('./pages/booking/booking.module').then( m => m.BookingPageModule)
+  },
+  {
+    path: 'booking2',
+    loadChildren: () => import('./pages/booking2/booking2.module').then( m => m.Booking2PageModule)
+  },
+  {
+    path: 'personal-data',
+    loadChildren: () => import('./pages/personal-data/personal-data.module').then( m => m.PersonalDataPageModule)
+  },
+  {
+    path: 'support',
+    loadChildren: () => import('./pages/support/support.module').then( m => m.SupportPageModule)
   }
 ];
 

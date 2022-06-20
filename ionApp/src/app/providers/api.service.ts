@@ -73,4 +73,8 @@ export class ApiService {
         return this.httpClient.post(this.operationUrl + 'Reservations/Reserver.php', data);
     }
 
+    updateClient(data: any){
+        return this.httpClient.post(this.operationUrl + 'Clients/clientOp.php',data);
+    }
+
 }

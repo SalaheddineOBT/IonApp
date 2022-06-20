@@ -8,51 +8,83 @@
 
     <div id="header">
         <div id="app-bar">
-            <div id="logo">
-                <ion-icon name="car-sharp"></ion-icon>
-                <span>Car Rental</span>
-            </div>
+            <span></span>
+            <ul>
+                <li style="background-color: #fff;color: #107FB6;">1</li>
+                <li>2</li>
+            </ul>
         </div>
     </div>
 
     <div class="wrapper">
         <ion-card class="form-wrapper">
             <div id="desc">
-                <h1>New User !</h1>
-                <p>Fill details and start renting your favcars !</p>
+                <h1>Book Now !</h1>
+                <p>Fill details and Get Your Car !</p>
             </div>
             <ion-card-content>
                 <form>
                     <ion-list lines="none">
                         <ion-item>
-                            <ion-icon name="person-sharp"></ion-icon>
-                            <input type="text" placeholder="Enter Your Full Name">
+                            <ion-icon name="calendar-sharp"></ion-icon>
+                            <input type="text" readonly id="open-date-input-1" [value]="rentDate" placeholder="Renting Date">
                         </ion-item>
-
-                        <ion-item style="margin-top: 1.3rem;">
-                            <ion-icon name="call"></ion-icon>
-                            <input type="tel" placeholder="Enter Your Phone Number">
-                        </ion-item>
-
-                        <ion-item style="margin-top: 1.3rem;">
-                            <ion-icon name="mail"></ion-icon>
-                            <input type="text" placeholder="Enter Your Email">
-                        </ion-item>
-                        <ion-item style="margin-top: 1.3rem;">
-                            <ion-icon name="lock-closed"></ion-icon>
-                            <input type="password" placeholder="Enter Your Password">
-                        </ion-item>
+                        <ion-popover trigger="open-date-input-1" show-backdrop="true">
+                            <ng-template>
+                                <ion-datetime
+                                    #popoverDatetime1
+                                    [min]="today"
+                                    showDefaultButtons="true"
+                                    (ionChange)="rentDate = formatDate(popoverDatetime1.value)"
+                                ></ion-datetime>
+                            </ng-template>
+                        </ion-popover>
                         <ion-item style="margin-top: 1.3rem;">
                             <ion-icon name="calendar-sharp"></ion-icon>
-                            <input type="password" placeholder="Confirm Your Password">
+                            <input type="text" id="open-date-input-2" readonly [value]="returnDate" placeholder="Return Date">
                         </ion-item>
-
+                        <!-- <ion-modal trigger="open-modal">
+                            <ng-template>
+                                <ion-content>
+                                    <ion-datetime
+                                        showDefaultButtons="true"
+                                        [min]="today"
+                                        #popoverDatetime2
+                                        presentation="date"
+                                        (ionChange)="returnDate = formatDate(popoverDatetime2.value)"
+                                    ></ion-datetime>
+                                </ion-content>
+                            </ng-template>
+                        </ion-modal> -->
+                        <ion-popover trigger="open-date-input-2" show-backdrop="true">
+                            <ng-template>
+                                <ion-datetime
+                                    [min]="today"
+                                    #popoverDatetime2
+                                    showDefaultButtons="true"
+                                    (ionChange)="returnDate = formatDate(popoverDatetime2.value)"
+                                ></ion-datetime>
+                            </ng-template>
+                        </ion-popover>
+                        <ion-item style="margin-top: 1.3rem;">
+                            <ion-icon name="call"></ion-icon>
+                            <input type="text" placeholder="Enter Your Phone Number">
+                        </ion-item>
+                        <ion-item style="margin-top: 1.3rem;">
+                            <img src="./assets/images/national.png" alt="" srcset="">
+                            <input type="text" placeholder="Enter Your National ID">
+                        </ion-item>
+                        <ion-item style="margin-top: 1.3rem;">
+                            <img src="./assets/images/permit.png" alt="" srcset="">
+                            <input type="text" placeholder="Enter Your Driver's License">
+                        </ion-item>
+                        <ion-item style="margin-top: 1.3rem;" lines="none">
+                            <ion-icon style="height: 35%;" name="location-sharp"></ion-icon>
+                            <ion-textarea rows="6" cols="20" placeholder="Enter Your Address"></ion-textarea>
+                        </ion-item>
                         <ion-button expand="block">
-                            <span>Continue</span>
-                            <svg width="25" height="25" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="37" cy="37" r="35.5" stroke="white" stroke-width="3"></circle>
-                                <path d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z" fill="white"></path>
-                            </svg>
+                            <span>Next</span>
+                            <img src="./assets/images/booking.png" alt="">
                         </ion-button>
                     </ion-list>
                 </form>
