@@ -5,5 +5,38 @@
 </ion-header>
 
 <ion-content>
-holla
+    <div class="container">
+        <div class="header">
+            <h1>
+                booking summary
+            </h1>
+        </div>
+        <div class="carInfo">
+            <div class="image">
+                <img src="https://rumbustious-hilltop.000webhostapp.com/API/Photos/cars/{{car?.Photo}}" alt="" srcset="">
+            </div>
+            <div class="data">
+                <span class="name">{{car?.Name}}</span>
+                <span class="price">Price : $ {{car?.PricePerDay}} /d</span>
+            </div>
+        </div>
+        <div class="date">
+            <ion-card>
+                <span>Renting On:</span>
+                <span>{{rent}}</span>
+            </ion-card>
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+            <ion-card>
+                <span>Return On :</span>
+                <span>{{return}}</span>
+            </ion-card>
+        </div>
+        <div class="total">
+            <span>Total Price : {{price}} $</span>
+        </div>
+        <div class="buttons">
+            <ion-button color="secondary">Return</ion-button>
+            <ion-button (click)="book()">Confirm</ion-button>
+        </div>
+    </div>
 </ion-content>

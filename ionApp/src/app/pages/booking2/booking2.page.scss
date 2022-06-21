@@ -1,0 +1,77 @@
+.container{
+    width: 100%;
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h1{
+            text-transform: capitalize;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .data{
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        justify-content: space-between;
+
+        .name{
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .price{
+            font-size: 1rem;
+            font-weight: 600;
+            padding-left: .5rem;
+        }
+    }
+
+    .date{
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        justify-content: center;
+
+        ion-card{
+            padding-top: .5rem;
+            display: grid;
+            text-align: center;
+            width: 10rem;
+            height: 5rem;
+        }
+        ion-icon{
+            font-size: 2rem;
+        }
+    }
+
+    .buttons{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        ion-button{
+            width: 40%;
+            margin-left: .5rem;
+            margin-right: .5rem;
+        }
+    }
+
+    .total{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 1rem;
+
+        span{   
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    }
+}

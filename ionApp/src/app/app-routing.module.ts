@@ -48,7 +48,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/booking/booking.module').then( m => m.BookingPageModule)
   },
   {
-    path: 'booking2',
+    path: 'booking2/:id',
     loadChildren: () => import('./pages/booking2/booking2.module').then( m => m.Booking2PageModule)
   },
   {

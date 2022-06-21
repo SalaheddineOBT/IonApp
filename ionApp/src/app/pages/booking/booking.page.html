@@ -7,13 +7,13 @@
 <ion-content>
 
     <div id="header">
-        <div id="app-bar">
+        <!-- <div id="app-bar">
             <span></span>
             <ul>
                 <li style="background-color: #fff;color: #107FB6;">1</li>
                 <li>2</li>
             </ul>
-        </div>
+        </div> -->
     </div>
 
     <div class="wrapper">
@@ -23,12 +23,18 @@
                 <p>Fill details and Get Your Car !</p>
             </div>
             <ion-card-content>
-                <form>
+                <form [formGroup]="bookForm">
                     <ion-list lines="none">
+
                         <ion-item>
                             <ion-icon name="calendar-sharp"></ion-icon>
                             <input type="text" readonly id="open-date-input-1" [value]="rentDate" placeholder="Renting Date">
                         </ion-item>
+
+                        <!-- <span class="error" *ngIf="fieldHasError('renton')">
+                            {{ getErrorMessage("renton") }}
+                        </span> -->
+
                         <ion-popover trigger="open-date-input-1" show-backdrop="true">
                             <ng-template>
                                 <ion-datetime
@@ -39,10 +45,15 @@
                                 ></ion-datetime>
                             </ng-template>
                         </ion-popover>
+
                         <ion-item style="margin-top: 1.3rem;">
                             <ion-icon name="calendar-sharp"></ion-icon>
-                            <input type="text" id="open-date-input-2" readonly [value]="returnDate" placeholder="Return Date">
+                            <input type="text" id="open-date-input-2" formControlName="returnon" readonly [value]="returnDate" placeholder="Return Date">
                         </ion-item>
+
+                        <!-- <span class="error" *ngIf="fieldHasError('returnon')">
+                            {{ getErrorMessage("returnon") }}
+                        </span> -->
                         <!-- <ion-modal trigger="open-modal">
                             <ng-template>
                                 <ion-content>
@@ -66,22 +77,42 @@
                                 ></ion-datetime>
                             </ng-template>
                         </ion-popover>
+
                         <ion-item style="margin-top: 1.3rem;">
                             <ion-icon name="call"></ion-icon>
-                            <input type="text" placeholder="Enter Your Phone Number">
+                            <input type="text" formControlName="phone" placeholder="Enter Your Phone Number">
                         </ion-item>
+
+                        <span class="error" *ngIf="fieldHasError('phone')">
+                            {{ getErrorMessage("phone") }}
+                        </span>
+
                         <ion-item style="margin-top: 1.3rem;">
                             <img src="./assets/images/national.png" alt="" srcset="">
-                            <input type="text" placeholder="Enter Your National ID">
+                            <input type="text" formControlName="nationalId" placeholder="Enter Your National ID">
                         </ion-item>
+                        
+                        <span class="error" *ngIf="fieldHasError('nationalId')">
+                            {{ getErrorMessage("nationalId") }}
+                        </span>
+
                         <ion-item style="margin-top: 1.3rem;">
                             <img src="./assets/images/permit.png" alt="" srcset="">
-                            <input type="text" placeholder="Enter Your Driver's License">
+                            <input type="text" formControlName="permisId" placeholder="Enter Your Driver's License">
                         </ion-item>
+                        
+                        <span class="error" *ngIf="fieldHasError('permisId')">
+                            {{ getErrorMessage("permisId") }}
+                        </span>
+
                         <ion-item style="margin-top: 1.3rem;" lines="none">
                             <ion-icon style="height: 35%;" name="location-sharp"></ion-icon>
-                            <ion-textarea rows="6" cols="20" placeholder="Enter Your Address"></ion-textarea>
+                            <ion-textarea rows="6" cols="20" formControlName="adresse" placeholder="Enter Your Address"></ion-textarea>
                         </ion-item>
+                        <span class="error" *ngIf="fieldHasError('adresse')">
+                            {{ getErrorMessage("adresse") }}
+                        </span>
+
                         <ion-button expand="block" (click)="booking()">
                             <span>Next</span>
                             <img src="./assets/images/booking.png" alt="">
